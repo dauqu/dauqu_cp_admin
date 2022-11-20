@@ -21,12 +21,23 @@ router.get("/:id", (req, res) => {
 
 //Create one technology
 router.post("/", async (req, res) => {
+
+    //CHeck if the technology already exists
+    const tech = await Technologies.findOne({ username: req.body.username.toLowerCase() });
+    if (tech != null) {
+        return res.status(400).json({ message: "Technology already exists" });
+    }
+
+    //Create new technology
     const technology = new Technologies({
         name: req.body.name,
+        username: req.body.username.toLowerCase(),
         description: req.body.description,
-        image: req.body.image,
-        image_data: req.body.image_data,
+        logo: req.body.logo,
+        build_info: req.body.build_info,
     });
+
+    //Save technology
     try {
         const newTechnology = await technology.save();
         res.status(201).json(newTechnology);

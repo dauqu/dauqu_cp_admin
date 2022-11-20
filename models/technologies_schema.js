@@ -6,18 +6,21 @@ const TechnoloogySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        required: true,
+    },
     description: {
         type: String,
         required: true,
     },
-    image: {
+    logo: {
         type: String,
         required: true,
     },
-    image_data: {
+    build_info: {
         type: Array,
         required: true,
-
     },
     created_at: {
         type: Date,
