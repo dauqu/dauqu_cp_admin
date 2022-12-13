@@ -7,11 +7,11 @@ const fs = require("fs");
 //Allow cors
 const cors = require("cors");
 //Loop of allowed origins
-const allowedOrigins = ["http://localhost:3001", "http://localhost:3000", "https://admin-for-all.vercel.app"];
+const allowedOrigins = ["https://dauqu-cp.vercel.app", "http://localhost:3000", "https://admin-for-all.vercel.app"];
 
 app.use(
     cors({
-        origin: "*",
+        origin: allowedOrigins,
         credentials: true,
     })
 );
